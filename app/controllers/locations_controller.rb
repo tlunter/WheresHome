@@ -1,43 +1,37 @@
 class LocationsController < ApplicationController
   def index
-    @locations = Location.all
-
-    respond_to do |format|
-      format.json { render json: @locations }
+    if current_buyer.nil?
+      flash[:error] = "You must be a signed in to get a location index"
+      redirect_to :back
+    else
+      @locations = current_buyer.locations
     end
   end
 
   def show
     @location = Location.find(params[:id])
-
-    respond_to do |format|
-      format.json { render json: @location }
-    end
   end
 
   def new
     @location = Location.new
-
-    respond_to do |format|
-      format.json { render json: @location }
-    end
   end
 
   def edit
-    @location = Location.find(params[:id])
   end
 
   def create
-    @location = Location.new(params[:location])
-
-    respond_to do |format|
-      if @location.save
-        format.html { redirect_to @location, notice: 'Location was successfully created.' }
-        format.json { render json: @location, status: :created, location: @location }
+    case who_is_signed_in
+    when :seller
+      @location = current_seller.properties.find_by_id(params[:property_id]).location.build(params[:location])
+    when :user
+      if params[:job_id].nil?
+        @location = current_buyer.locations.build(params[:job])
       else
-        format.html { render action: "new" }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
+        @location = current_buyer.jobs.find_by_id(params[:job_id]).location.build(params[:location])
       end
+    else
+      flash[:error] = "You must be signed in to create a location"
+      redirect_to :back
     end
   end
 
@@ -56,12 +50,15 @@ class LocationsController < ApplicationController
   end
 
   def destroy
-    @location = Location.find(params[:id])
-    @location.destroy
-
-    respond_to do |format|
-      format.html { redirect_to locations_url }
-      format.json { head :no_content }
+    case who_is_signed_in?
+    when :seller
+      flash[:error] = "Sellers have no locations to destroy"
+    when :buyer
+      current_buyer.locations.find_by_id(params[:id]).destroy
+      flash[:success] = "Location destroyed"
+      redirect_to current_buyer
+    else
+      flash[:error] = "You must be a signed in buyer to delete a location"
     end
   end
 end
