@@ -5,29 +5,23 @@ class PropertiesController < ApplicationController
   # GET /properties
   # GET /properties.json
   def index
-    @properties = Property.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @properties }
+    unless params[:city] and params[:state]
+      flash[:error] = "You must provide a valid city and state to search for properties"
+      redirect_to :back
     end
+    @properties = Property.find_by_city_and_state(params[:city], params[:state])
   end
 
   # GET /properties/1
   # GET /properties/1.json
   def show
     @property = Property.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @property }
-    end
   end
 
   # GET /properties/new
   # GET /properties/new.json
   def new
-    @property = current_seller.properties.create(params[:property])
+    @property = Property.new
   end
 
   # GET /properties/1/edit
@@ -37,13 +31,13 @@ class PropertiesController < ApplicationController
   # POST /properties
   # POST /properties.json
   def create
+    @property = current_seller.properties.build(params[:property])
     respond_to do |format|
       if @property.save
-        format.html { redirect_to @property, notice: 'Property was successfully created.' }
-        format.json { render json: @property, status: :created, location: @property }
+        flash[:success] = "Property at #{@property.location} created"
+        redirect_to sellers_url
       else
-        format.html { render action: "new" }
-        format.json { render json: @property.errors, status: :unprocessable_entity }
+        render 'new'
       end
     end
   end
@@ -53,11 +47,10 @@ class PropertiesController < ApplicationController
   def update
     respond_to do |format|
       if @property.update_attributes(params[:property])
-        format.html { redirect_to @property, notice: 'Property was successfully updated.' }
-        format.json { head :no_content }
+        flash[:success] = "Property updated"
+        redirect_to sellers_url
       else
-        format.html { render action: "edit" }
-        format.json { render json: @property.errors, status: :unprocessable_entity }
+        render 'edit'
       end
     end
   end
@@ -66,17 +59,14 @@ class PropertiesController < ApplicationController
   # DELETE /properties/1.json
   def destroy
     @property.destroy
-
-    respond_to do |format|
-      format.html { redirect_to properties_url }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Property destroyed"
+    redirect_to sellers_url
   end
 
   private
   def require_login
     unless logged_in?
-      flash[:error] = "Only logged in sellers can add a new property"
+      flash[:error] = "Only logged in sellers can add a edit their jobs"
       redirect_to :back
     end
   end
