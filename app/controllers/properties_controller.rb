@@ -1,4 +1,7 @@
 class PropertiesController < ApplicationController
+  before_filter :require_login, only: [:create, :new, :edit, :update, :destroy]
+  before_filter :correct_seller, only: [:edit, :update, :destroy]
+
   # GET /properties
   # GET /properties.json
   def index
@@ -24,24 +27,16 @@ class PropertiesController < ApplicationController
   # GET /properties/new
   # GET /properties/new.json
   def new
-    @property = Property.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @property }
-    end
+    @property = current_seller.properties.create(params[:property])
   end
 
   # GET /properties/1/edit
   def edit
-    @property = Property.find(params[:id])
   end
 
   # POST /properties
   # POST /properties.json
   def create
-    @property = Property.new(params[:property])
-
     respond_to do |format|
       if @property.save
         format.html { redirect_to @property, notice: 'Property was successfully created.' }
@@ -56,8 +51,6 @@ class PropertiesController < ApplicationController
   # PUT /properties/1
   # PUT /properties/1.json
   def update
-    @property = Property.find(params[:id])
-
     respond_to do |format|
       if @property.update_attributes(params[:property])
         format.html { redirect_to @property, notice: 'Property was successfully updated.' }
@@ -72,7 +65,6 @@ class PropertiesController < ApplicationController
   # DELETE /properties/1
   # DELETE /properties/1.json
   def destroy
-    @property = Property.find(params[:id])
     @property.destroy
 
     respond_to do |format|
@@ -80,4 +72,26 @@ class PropertiesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+  def require_login
+    unless logged_in?
+      flash[:error] = "Only logged in sellers can add a new property"
+      redirect_to :back
+    end
+  end
+
+  def correct_seller
+    @property = current_seller.properties.find_by_id(params[:id])
+    unless @property
+      flash[:error] = "You cannot modify a property that you do not own"
+      redirect_to :back
+    end
+  end
+
+  # 'bool-ize' the current_seller
+  def logged_in?
+    !!current_seller
+  end
+
 end
