@@ -31,12 +31,12 @@ class Buyer < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
     :first_name, :last_name, :phone_number
-
+ 
   has_many :locations, dependent: :delete_all
   has_many :jobs, dependent: :delete_all
-  has_one :pictures
-
-  def self.find_by_linkedin_oauth(auth, signed_in_resource=nil)
+  has_one :picture
+  
+  def self.find_for_linkedin_oauth(auth, signed_in_resource=nil)
     data = auth.info
     user = Buyer.where(email: auth.info.email).first
     if user
