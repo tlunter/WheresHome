@@ -2,35 +2,25 @@ class PropertiesController < ApplicationController
   before_filter :require_login, only: [:index, :create, :new, :edit, :update, :destroy]
   before_filter :correct_seller, only: [:edit, :update, :destroy]
 
-  # GET /properties
-  # GET /properties.json
   def index
     @properties = current_seller.properties
   end
 
-  # GET /properties/1
-  # GET /properties/1.json
   def show
     @property = Property.find(params[:id])
   end
 
-  # GET /properties/new
-  # GET /properties/new.json
   def new
     @property = Property.new
   end
 
-  # GET /properties/1/edit
   def edit
   end
 
-  # POST /properties
-  # POST /properties.json
   def create
     @property = current_seller.properties.build(params[:property])
     respond_to do |format|
       if @property.save
-        flash[:success] = "Property at #{@property.location} created"
         redirect_to @property
       else
         render 'new'
@@ -38,8 +28,6 @@ class PropertiesController < ApplicationController
     end
   end
 
-  # PUT /properties/1
-  # PUT /properties/1.json
   def update
     if @property.update_attributes(params[:property])
       flash[:success] = "Property updated"
@@ -49,8 +37,6 @@ class PropertiesController < ApplicationController
     end
   end
 
-  # DELETE /properties/1
-  # DELETE /properties/1.json
   def destroy
     @property.destroy
     flash[:success] = "Property destroyed"
