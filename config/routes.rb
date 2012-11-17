@@ -1,4 +1,6 @@
 WheresHome::Application.routes.draw do
+  resources :jobs
+
   resources :properties
 
   resources :pictures
