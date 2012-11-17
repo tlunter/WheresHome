@@ -3,30 +3,21 @@ class JobsController < ApplicationController
   before_filter :require_login, only: [:index, :new, :edit, :create, :update, :destroy]
   before_filter :correct_buyer, only: [:edit, :update, :destroy]
   
-  # GET /jobs
-  # GET /jobs.json
   def index
     @jobs = current_buyer.jobs
   end
 
-  # GET /jobs/1
-  # GET /jobs/1.json
   def show
     @job = Job.find(params[:id])
   end
 
-  # GET /jobs/new
-  # GET /jobs/new.json
   def new
     @job = Job.new
   end
 
-  # GET /jobs/1/edit
   def edit
   end
 
-  # POST /jobs
-  # POST /jobs.json
   def create
     @job = current_buyer.jobs.build(params[:job])
     if @job.save
@@ -37,8 +28,6 @@ class JobsController < ApplicationController
     end
   end
 
-  # PUT /jobs/1
-  # PUT /jobs/1.json
   def update
     if @job.update_attributes(params[:job])
       flash[:success] = "Job updated"
@@ -48,8 +37,6 @@ class JobsController < ApplicationController
     end
   end
 
-  # DELETE /jobs/1
-  # DELETE /jobs/1.json
   def destroy
     @job.destroy
     flash[:success] = "Job destroyed"
