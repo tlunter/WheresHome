@@ -15,12 +15,12 @@ class Job < ActiveRecord::Base
   attr_accessible :company, :phonenumber, :salary, :title
 
   # Everything should be present
-  validates :company, prescence: true
-  validates :title, prescence: true
-  validates :salary, prescence: true
+  validates :company, presence: true
+  validates :title, presence: true
+  validates :salary, presence: true
   
   VALID_PHONE_NUMBER_REGEX = /\(\d{3}\)\d{3}-\d{4}/
-  validates :phonenumber, prescence: true,
+  validates :phonenumber, presence: true,
                           format: { with: VALID_PHONE_NUMBER_REGEX }
 
   belongs_to :buyer

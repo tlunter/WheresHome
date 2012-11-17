@@ -21,9 +21,9 @@ class Location < ActiveRecord::Base
   VALID_STATE_REGEX = /[a-zA-Z]{2}/
   VALID_CITY_REGEX  = /[a-zA-Z]+/
 
-  validates :state, prescence: true,
+  validates :state, presence: true,
                     format: { with: VALID_STATE_REGEX }
-  validates :city, prescence: true,
+  validates :city, presence: true,
                    format: { with: VALID_CITY_REGEX }
   validates :address1, presence: true
 

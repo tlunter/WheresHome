@@ -14,7 +14,7 @@
 class Property < ActiveRecord::Base
   attr_accessible :max_price, :min_price, :sell_type, :status
   
-  validates :max_price, prescence: true,
+  validates :max_price, presence: true,
                         numericality: { only_integer: true }
 
   has_many :pictures
