@@ -25,10 +25,31 @@ class Buyer < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
     :first_name, :last_name, :phone_number
-  # attr_accessible :title, :body
+
+  has_many :locations, dependent: :delete_all
+  has_many :jobs, dependent: :delete_all
+  has_one :pictures
+
+  def self.find_by_linkedin_oauth(auth, signed_in_resource=nil)
+    data = auth.info
+    user = Buyer.where(email: auth.info.email).first
+    if user
+      user["first_name"] = data["first_name"]
+      user["last_name"] = data["last_name"]
+      user.save
+    else
+      user = Buyer.create(first_name: data["first_name"],
+                          last_name: data["last_name"],
+                          email: data["email"],
+                          password: Devise.friendly_token[0,20]
+                         )
+    end
+    user
+  end
 end
