@@ -24,4 +24,5 @@ class Job < ActiveRecord::Base
                           format: { with: VALID_PHONE_NUMBER_REGEX }
 
   belongs_to :buyer
+  has_one :location
 end
