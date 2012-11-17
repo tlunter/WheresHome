@@ -1,4 +1,6 @@
 WheresHome::Application.routes.draw do
+  devise_for :buyers
+
   resources :locations
 
   # The priority is based upon order of creation:
