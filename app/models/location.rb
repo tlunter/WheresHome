@@ -30,5 +30,5 @@ class Location < ActiveRecord::Base
   belongs_to :buyer
   belongs_to :property
   belongs_to :job
-
+  
 end

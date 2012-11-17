@@ -12,4 +12,9 @@
 
 class Picture < ActiveRecord::Base
   attr_accessible :height, :location, :width
+
+  belongs_to :property
+  belongs_to :seller
+  belongs_to :buyer
+
 end

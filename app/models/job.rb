@@ -25,4 +25,6 @@ class Job < ActiveRecord::Base
 
   belongs_to :buyer
   has_one :location
+
+  validates_associated :location
 end
