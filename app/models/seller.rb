@@ -28,6 +28,17 @@ class Seller < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  # attr_accessible :title, :body
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
+    :first_name, :last_name, :phone_number
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
+  VALID_PHONE_NUMBER_REGEX = /\(\d{3}\)\d{3}-\d{4}/
+  validates :phonenumber, presence: true,
+                          format: { with: VALID_PHONE_NUMBER_REGEX,
+                                    message: "The phone number must be of the format '(555)555-5555'"}
+  has_many :properties
+  has_one :picture
+
 end
