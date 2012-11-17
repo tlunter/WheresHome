@@ -7,6 +7,14 @@ gem 'rails', '3.2.8'
 
 gem 'sqlite3'
 
+gem 'bootstrap-sass', '~> 2.0.0'
+gem 'thin', '1.5.0'
+gem 'devise', '2.1.2'
+gem 'omniauth', '1.1.1'
+gem 'omniauth-oauth', '1.0.1'
+gem 'oauth', '0.4.7'
+gem 'oauth2', '0.8.0'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
