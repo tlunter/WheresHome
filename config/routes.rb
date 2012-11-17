@@ -1,15 +1,13 @@
 WheresHome::Application.routes.draw do
   resources :jobs
-
   resources :properties
-
   resources :pictures
+  resources :locations
 
   devise_for :sellers
+  #devise_for :buyers, controllers: { omniauth_callbacks: "buyers/omniauth_callbacks" }
 
-  devise_for :buyers
-
-  resources :locations
+  root to: "static_pages#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
