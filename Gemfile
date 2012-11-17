@@ -22,7 +22,7 @@ gem 'omniauth-oauth', '1.0.1'
 gem 'omniauth-linkedin', '0.0.8'
 gem 'oauth', '0.4.7'
 gem 'oauth2', '0.8.0'
-
+gem 'annotate', '>=2.5.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
