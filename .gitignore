@@ -13,3 +13,19 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore temp files
+*.swp
+
+# Because SOME people are on OSX
+.DS_Store
+
+# Because bundle exec is annoying
+/binstubs
+
+# This messes everything up
+Gemfile.lock
+
+# Make sure to run `rake db:migrate`
+/db/schema.rb
+/db/*.sqlite3
