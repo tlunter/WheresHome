@@ -1,10 +1,10 @@
 class CreateProperties < ActiveRecord::Migration
   def change
     create_table :properties do |t|
-      t.int :min_price
-      t.int :max_price
-      t.int :sell_type
-      t.int :status
+      t.integer :min_price
+      t.integer :max_price
+      t.integer :sell_type
+      t.integer :status
 
       t.timestamps
     end
