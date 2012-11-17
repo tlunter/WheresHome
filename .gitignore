@@ -24,7 +24,7 @@
 /binstubs
 
 # This messes everything up
-Gemfile.lock
+/Gemfile.lock
 
 # Make sure to run `rake db:migrate`
 /db/schema.rb
