@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Min price:</b>
+  <%= @property.min_price %>
+</p>
+
+<p>
+  <b>Max price:</b>
+  <%= @property.max_price %>
+</p>
+
+<p>
+  <b>Sell type:</b>
+  <%= @property.sell_type %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @property.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>

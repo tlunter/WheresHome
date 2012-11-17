@@ -1,4 +1,6 @@
 WheresHome::Application.routes.draw do
+  resources :properties
+
   resources :pictures
 
   devise_for :sellers

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  min_price: 
+  max_price: 
+  sell_type: 
+  status: 
+
+two:
+  min_price: 
+  max_price: 
+  sell_type: 
+  status: 
