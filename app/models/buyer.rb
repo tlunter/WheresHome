@@ -34,7 +34,7 @@ class Buyer < ActiveRecord::Base
  
   has_many :locations, dependent: :delete_all
   has_many :jobs, dependent: :delete_all
-  has_one :pictures
+  has_one :picture
   
   def self.find_for_linkedin_oauth(auth, signed_in_resource=nil)
     data = auth.info
