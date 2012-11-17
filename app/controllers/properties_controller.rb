@@ -1,15 +1,11 @@
 class PropertiesController < ApplicationController
-  before_filter :require_login, only: [:create, :new, :edit, :update, :destroy]
+  before_filter :require_login, only: [:index, :create, :new, :edit, :update, :destroy]
   before_filter :correct_seller, only: [:edit, :update, :destroy]
 
   # GET /properties
   # GET /properties.json
   def index
-    unless params[:city] and params[:state]
-      flash[:error] = "You must provide a valid city and state to search for properties"
-      redirect_to :back
-    end
-    @properties = Property.find_by_city_and_state(params[:city], params[:state])
+    @properties = current_seller.properties
   end
 
   # GET /properties/1
@@ -35,7 +31,7 @@ class PropertiesController < ApplicationController
     respond_to do |format|
       if @property.save
         flash[:success] = "Property at #{@property.location} created"
-        redirect_to sellers_url
+        redirect_to @property
       else
         render 'new'
       end
@@ -45,13 +41,11 @@ class PropertiesController < ApplicationController
   # PUT /properties/1
   # PUT /properties/1.json
   def update
-    respond_to do |format|
-      if @property.update_attributes(params[:property])
-        flash[:success] = "Property updated"
-        redirect_to sellers_url
-      else
-        render 'edit'
-      end
+    if @property.update_attributes(params[:property])
+      flash[:success] = "Property updated"
+      redirect_to @property
+    else
+      render 'edit'
     end
   end
 
@@ -64,24 +58,24 @@ class PropertiesController < ApplicationController
   end
 
   private
-  def require_login
-    unless logged_in?
-      flash[:error] = "Only logged in sellers can add a edit their jobs"
-      redirect_to :back
+    def require_login
+      unless logged_in?
+        flash[:error] = "Only logged in sellers can add a edit their jobs"
+        redirect_to :back
+      end
     end
-  end
 
-  def correct_seller
-    @property = current_seller.properties.find_by_id(params[:id])
-    unless @property
-      flash[:error] = "You cannot modify a property that you do not own"
-      redirect_to :back
+    def correct_seller
+      @property = current_seller.properties.find_by_id(params[:id])
+      unless @property
+        flash[:error] = "You cannot modify a property that you do not own"
+        redirect_to :back
+      end
     end
-  end
 
-  # 'bool-ize' the current_seller
-  def logged_in?
-    !!current_seller
-  end
+    # 'bool-ize' the current_seller
+    def logged_in?
+      !!current_seller
+    end
 
 end
