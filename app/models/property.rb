@@ -13,4 +13,12 @@
 
 class Property < ActiveRecord::Base
   attr_accessible :max_price, :min_price, :sell_type, :status
+  
+  validates :max_price, prescence: true,
+                        numericality: { only_integer: true }
+
+  has_many :pictures
+  has_one :location
+  belongs_to :seller
+  validates_associated :location, :pictures
 end
