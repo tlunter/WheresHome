@@ -21,8 +21,8 @@ class Job < ActiveRecord::Base
   
   VALID_PHONE_NUMBER_REGEX = /\(\d{3}\)\d{3}-\d{4}/
   validates :phonenumber, presence: true,
-                          format: { with: VALID_PHONE_NUMBER_REGEX },
-                          message: "The phone number must be of the format '(555)555-5555'"
+                          format: { with: VALID_PHONE_NUMBER_REGEX,
+                                    message: "The phone number must be of the format '(555)555-5555'"}
 
 
   belongs_to :buyer
