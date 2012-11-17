@@ -5,10 +5,17 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+# database things
 gem 'sqlite3'
+gem 'foreigner', '~> 1.2.1'
 
+# for easy css and javascript
 gem 'bootstrap-sass', '~> 2.0.0'
+
+# a much better webserver
 gem 'thin', '1.5.0'
+
+# authentication
 gem 'devise', '2.1.2'
 gem 'omniauth', '1.1.1'
 gem 'omniauth-oauth', '1.0.1'
