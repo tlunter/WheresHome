@@ -54,7 +54,7 @@ class PropertiesController < ApplicationController
   def destroy
     @property.destroy
     flash[:success] = "Property destroyed"
-    redirect_to sellers_url
+    redirect_to current_seller
   end
 
   private
