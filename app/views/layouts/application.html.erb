@@ -12,19 +12,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body data-spy="scroll" data-target=".subnav" data-offset="50">
-  <div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar navbar-inverse">
     <div class="navbar-inner">
       <div class="container">   
-        <%= link_to "Home is Here!", root_url, class: "brand" %>
+        <i class="icon-home pull-left" style="margin-top:10px"></i><%= link_to "Home is Here!", root_url, class: "brand" %>
         <div class="nav-collapse collapse">
           <ul class="nav pull-right">
           <% if buyer_signed_in? and not seller_signed_in? %>
-            <li><%= link_to :destroy_buyer_session, method: :delete do %><button type="submit" class="btn btn-small pull-right">Buyer Sign Out</button><% end %></li>
+            <li><%= link_to :destroy_buyer_session, method: :delete do %><button type="submit" class="btn btn-small pull-right" style="margin-top:-3px">Buyer Sign Out</button><% end %></li>
           <% elsif seller_signed_in? and not buyer_signed_in? %>
-            <li><%= link_to :destroy_seller_session, method: :delete do %><button type="submit" class="btn btn-small pull-right">Seller Sign Out</button><% end %></li>
+            <li><%= link_to :destroy_seller_session, method: :delete do %><button type="submit" class="btn btn-small pull-right" style="margin-top:-3px">Seller Sign Out</button><% end %></li>
           <% else %>
-            <li><%= link_to buyer_omniauth_authorize_path(:linkedin) do %><button type="submit" class="btn btn-small pull-right">Buyer Sign In</button><% end %></li>
-            <li><%= link_to :new_seller_session do %><button type="submit" class="btn btn-small pull-right">Seller Sign In</button><% end %></li>
+            <li><%= link_to buyer_omniauth_authorize_path(:linkedin) do %><button type="submit" class="btn btn-small pull-right" style="margin-top:-3px">Buyer Sign In</button><% end %></li>
+            <li><%= link_to :new_seller_session do %><button type="submit" class="btn btn-small pull-right" style="margin-top:-3px">Seller Sign In</button><% end %></li>
           <% end %>
             <li><%= link_to "About", :static_pages_about %></li>
             <li><%= link_to "Contact", :static_pages_contact %></li>
