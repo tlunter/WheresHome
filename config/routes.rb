@@ -11,6 +11,7 @@ WheresHome::Application.routes.draw do
   match 'about', to: "static_pages#about"
   match 'contact', to: "static_pages#contact"
   match 'landing', to: "static_pages#landing"
+  match 'landlord', to: "static_pages#landlord"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

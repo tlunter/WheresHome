@@ -4,111 +4,37 @@
             <div class="nav-collapse collapse">
                 <button type="submit" class="btn btn-small pull-right">Sign Out</button>
                 <ul class="nav pull-right">
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="contact.html">Contact</a></li>
               </ul>   
           </div>
         </div>
       </div>
     <br>
-      <!-- <div class="head">
-        <div class="header">
-          
-        </div>
-      </div> -->
-
-
-
+      
     <!-- Main Content -->
     <div class="container-fluid"><br><br>
-      <div class="span3">
-        <div class="side-search">   
+      <div class="span3">  
+        <a href="#" class="thumbnail">
+          <%= image_tag "logo2.jpg", alt: "Logo", width: 320, height: 160 %>
+        </a>
           
-          <a href="#" class="thumbnail">
-            <img src="http://placehold.it/300x200" alt="">
-          </a>
+        <br><hr><br>
 
-          <br><hr><br>
-
-          <p>Search apartment listings</p> 
-            <form class="navbar-search pull-left">
-              <input type="text" class="search-query" placeholder="City">
-            </form>
-            <form class="navbar-search pull-left">
-              <input type="text" class="search-query" placeholder="State">
-            </form>
-
-            <br><hr class="soften"><br><br><br>
-
-            <form class="form-horizontal">
-              <div class="control-group">
-                <div class="input-prepend input-append row-fluid">
-                  <span class="add-on">$</span>
-                    <input class="span4" id="appendedPrependedInput" type="text" placeholder="Min.">
-                      <span class="add-on">.00</span>
-                    <span>&nbsp Min.</span>
-                </div>
-              
-
-                <div class="input-prepend input-append row-fluid">
-                  <span class="add-on">$</span>
-                    <input class="span4" id="appendedPrependedInput" type="text" placeholder="Max.">
-                      <span class="add-on">.00</span>
-                    <span>&nbsp Max.</span>
-                </div>
-              </div>
-            
-            <br>
-            <label class="radio">
-              <input type="radio"> < 5 miles
-            </label>
-            <label class="radio">
-              <input type="radio"> < 10 miles
-            </label>
-            <label class="radio">
-              <input type="radio"> < 20 miles
-            </label>
-            <label class="radio">
-              <input type="radio"> < 50 miles
-            </label>
-
-            <br>
-            <label class="options"><p>Number of Bedrooms</p>
-              <select>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </label>
-
-            
-            <label class="options"><p>Number of Bathrooms</p>
-              <select>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-              </select>
-            </label>
-
-
-            <br>  
-            <label class="checkbox">
-              <input type="checkbox">Pets
-            </label>
-
-            <button class="btn search-list pull-right">Where's Home</button>
-
-            <br><br>    
-           
+        <p class="lead">Properties</p>
+        <div class="properties">
+          <ul class="nav nav-list">
+            <!-- <li class="nav-header">Properties</li> -->
+            <li class="active"><a href="#">Property 1</a></li>
+            <li class="sublink"><a href="#">Edit</a></li>
+          </ul>
         </div>
+        
       </div>
           
             
       <div class="span7 offset1">
-        <p class="lead">Listings</p>
+        <p class="lead">Properties</p>
 
           <div class="well well-small">
               <p><b>Title</b></p>             
