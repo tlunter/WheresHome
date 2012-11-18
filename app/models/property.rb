@@ -31,6 +31,7 @@ class Property < ActiveRecord::Base
 
   has_many :pictures
   has_many :notifications
+  has_many :applications
   has_one :location
 
   accepts_nested_attributes_for :location, :pictures
