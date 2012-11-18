@@ -1,13 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Min price:</b>
-  <%= @property.min_price %>
-</p>
-
-<p>
-  <b>Max price:</b>
-  <%= @property.max_price %>
+  <b>Price:</b>
+  <%= @property.price %>
 </p>
 
 <p>
@@ -19,6 +14,16 @@
   <b>Status:</b>
   <%= @property.status %>
 </p>
+
+<p>
+  <b>Address:</b>
+  <%= @property.location.address1 %><br />
+  <% unless @property.location.address2.empty? %>
+  <%= @property.location.address2 %><br />
+  <% end %>
+  <%= @property.location.city %>, <%= @property.location.state %> <%= @property.location.zipcode %>
+</p>
+
 
 
 <%= link_to 'Edit', edit_property_path(@property) %> |

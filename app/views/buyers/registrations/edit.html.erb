@@ -12,6 +12,15 @@
   <div><%= f.label :phone_number %><br />
   <%= f.text_field :phone_number %></div>
 
+  <div><%= f.label :monthly_income %><br />
+  <%= f.text_field :monthly_income %></div>
+
+  <div><%= f.label :pets %><br />
+  <%= f.check_box :pets %></div>
+
+  <div><%= f.label :move_in %><br />
+  <%= f.date_select :move_in %></div>
+
   <div><%= f.submit "Update" %></div>
 <% end %>
 

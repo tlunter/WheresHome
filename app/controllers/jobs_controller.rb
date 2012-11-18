@@ -13,16 +13,15 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
-    @location = Location.new
+    @job.location = Location.new
   end
 
   def edit
   end
 
   def create
-    @job = current_buyer.jobs.build(params[:job])
-    @location = @job.location.build(params[:location])
-    if @location.save and @job.save
+    @job = current_buyer.jobs.build params[:job]
+    if @job.save
       flash[:success] = "Job created"
       redirect_to @job
     else
@@ -31,7 +30,7 @@ class JobsController < ApplicationController
   end
 
   def update
-    if @location.update_attributes(params[:location]) and @job.update_attributes(params[:job])
+    if @job.update_attributes(params[:job])
       flash[:success] = "Job updated"
       redirect_to @job
     else
@@ -42,7 +41,7 @@ class JobsController < ApplicationController
   def destroy
     @job.destroy
     flash[:success] = "Job destroyed"
-    redirect_to current_buyer
+    redirect 'jobs#index'
   end
 
 
@@ -56,7 +55,8 @@ class JobsController < ApplicationController
 
     def correct_buyer
       @job = current_buyer.jobs.find_by_id(params[:id])
-      @location = @job.location
+      logger.debug "Buyer: #{current_buyer.to_yaml}"
+      logger.debug "Jobs: #{current_buyer.jobs.to_yaml}"
       unless @job
         flash[:error] = "Only logged in buyers can add edit their jobs"
         redirect_to root_url

@@ -11,17 +11,40 @@
     </div>
   <% end %>
 
+
+  <%= f.fields_for :location do |l| %>
+    <div class="field">
+      <%= l.label :address1 %><br />
+      <%= l.text_field :address1 %>
+    </div>
+    <div class="field">
+      <%= l.label :address2 %><br />
+      <%= l.text_field :address2 %>
+    </div>
+    <div class="field">
+      <%= l.label :city %><br />
+      <%= l.text_field :city %>
+    </div>
+    <div class="field">
+      <%= l.label :state %><br />
+      <%= l.text_field :state %>
+    </div>
+    <div class="field">
+      <%= l.label :zipcode %><br />
+      <%= l.text_field :zipcode %>
+    </div>
+  <% end %>
   <div class="field">
-    <%= f.label :max_price %><br />
-    <%= f.text_field :max_price %>
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
   </div>
   <div class="field">
     <%= f.label :sell_type %><br />
-    <%= f.text_field :sell_type %>
+    <%= f.select :sell_type, [['Rent', 0], ['Sell', 1]] %>
   </div>
   <div class="field">
     <%= f.label :status %><br />
-    <%= f.text_field :status %>
+    <%= f.select :status, [['Closed', 0], ['Open', 1]] %>
   </div>
   <div class="field">
     <%= f.label :bedrooms %><br />

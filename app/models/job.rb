@@ -15,8 +15,14 @@
 #
 
 class Job < ActiveRecord::Base
+  belongs_to :buyer
+  has_one :location
+
   attr_accessible :company, :phonenumber, :salary, :title,
-    :manager_email, :manager_first_name, :manager_last_name
+    :manager_email, :manager_first_name, :manager_last_name,
+    :location_attributes
+
+  accepts_nested_attributes_for :location
 
   # Everything should be present
   validates :company, presence: true
@@ -34,11 +40,6 @@ class Job < ActiveRecord::Base
                           format: { with: VALID_PHONE_NUMBER_REGEX,
                                     message: "The phone number must be of the format '(555)555-5555'"}
 
-
-  belongs_to :buyer
-  has_one :location
-
-  accepts_nested_attributes_for :location
 
   validates_associated :location
 end

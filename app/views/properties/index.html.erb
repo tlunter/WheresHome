@@ -2,8 +2,8 @@
 
 <table>
   <tr>
-    <th>Min price</th>
-    <th>Max price</th>
+    <th>Location</th>
+    <th>Price</th>
     <th>Sell type</th>
     <th>Status</th>
     <th></th>
@@ -13,8 +13,8 @@
 
 <% @properties.each do |property| %>
   <tr>
-    <td><%= property.min_price %></td>
-    <td><%= property.max_price %></td>
+    <td><%= property.location.address1 %> <%= property.location.address2 %></td>
+    <td><%= property.price %></td>
     <td><%= property.sell_type %></td>
     <td><%= property.status %></td>
     <td><%= link_to 'Show', property %></td>

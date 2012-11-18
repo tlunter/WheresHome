@@ -6,12 +6,17 @@ class PropertiesController < ApplicationController
     @properties = current_seller.properties
   end
 
+  def search
+    @properties = Properties.find(params)
+  end
+
   def show
     @property = Property.find(params[:id])
   end
 
   def new
     @property = Property.new
+    @property.location = Location.new
   end
 
   def edit
@@ -19,12 +24,10 @@ class PropertiesController < ApplicationController
 
   def create
     @property = current_seller.properties.build(params[:property])
-    respond_to do |format|
-      if @property.save
-        redirect_to @property
-      else
-        render 'new'
-      end
+    if @property.save
+      redirect_to @property
+    else
+      render 'new'
     end
   end
 

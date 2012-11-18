@@ -21,16 +21,19 @@
 #
 
 class Property < ActiveRecord::Base
-  attr_accessible :max_price, :min_price, :sell_type, :status,
+  attr_accessible :price, :sell_type, :status,
     :bedrooms, :full_bathrooms, :half_bathrooms, :available_on,
     :pets_allowed, :laundry_available, :parking_available,
-    :description
+    :description, :location_attributes
   
-  validates :max_price, presence: true,
+  validates :price, presence: true,
                         numericality: { only_integer: true }
 
   has_many :pictures
   has_one :location
+
+  accepts_nested_attributes_for :location, :pictures
+  
   belongs_to :seller
   validates_associated :location, :pictures
 end
