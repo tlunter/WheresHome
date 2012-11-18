@@ -8,6 +8,9 @@ WheresHome::Application.routes.draw do
   #devise_for :buyers, controllers: { omniauth_callbacks: "buyers/omniauth_callbacks" }
 
   root to: "static_pages#index"
+  match 'about', to: "static_pages#about"
+  match 'contact', to: "static_pages#contact"
+  match 'landing', to: "static_pages#landing"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WheresHome</title>
+  <title>Where's Home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Where's Home - Find apartments and renters. Quick, easy renting. Reliable pre-screened tenants">
+  <meta name="author" content="Angel Hack">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Where's Home - Find apartments and renters. Quick, easy renting. Reliable pre-screened tenants">
+  <meta name="author" content="Angel Hack">
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body data-spy="scroll" data-target=".subnav" data-offset="50">
 
 <%= yield %>
 
