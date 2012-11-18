@@ -60,7 +60,7 @@ class JobsController < ApplicationController
       end
     end
 
-    # 'bool-ize' the current_seller
+    # 'bool-ize' the current_buyer
     def logged_in?
       !!current_buyer
     end

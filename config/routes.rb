@@ -9,7 +9,8 @@ WheresHome::Application.routes.draw do
   }
 
   devise_for :buyers, controllers: {
-    omniauth_callbacks: "buyers/omniauth_callbacks"
+    omniauth_callbacks: "buyers/omniauth_callbacks",
+    registrations: "buyers/registrations"
   }, skip: [
     :registrations,
     :sessions
@@ -17,8 +18,8 @@ WheresHome::Application.routes.draw do
 
   devise_scope :buyer do
     delete 'buyers/sign_out', to: 'devise/sessions#destroy', as: :destroy_buyer_session
-    get 'buyers/edit', to: 'devise/registrations#edit', as: :edit_buyer_registration
-    put 'buyers', to: 'devise/registrations#update', as: :buyer_registration
+    get 'buyers/edit', to: 'buyers/registrations#edit', as: :edit_buyer_registration
+    put 'buyers', to: 'buyers/registrations#update', as: :buyer_registration
   end
 
   root to: 'static_pages#index'
