@@ -20,8 +20,14 @@
           <ul class="nav pull-right">
           <% if buyer_signed_in? and not seller_signed_in? %>
             <li><%= link_to :destroy_buyer_session, method: :delete do %><button type="submit" class="btn btn-small pull-right" style="margin-top:-3px">Buyer Sign Out</button><% end %></li>
+            <li><%= link_to "Home", :root %></li>
+            <li><%= link_to "Edit Settings", :edit_buyer_registration %></li>
+            <li><%= link_to "View Applications", :applications %></li>
           <% elsif seller_signed_in? and not buyer_signed_in? %>
             <li><%= link_to :destroy_seller_session, method: :delete do %><button type="submit" class="btn btn-small pull-right" style="margin-top:-3px">Seller Sign Out</button><% end %></li>
+            <li><%= link_to "Home", :root %></li>
+            <li><%= link_to "Edit Settings", :edit_seller_registration %></li>
+            <li><%= link_to "View Applications", :applications %></li>
           <% else %>
             <li><%= link_to buyer_omniauth_authorize_path(:linkedin) do %><button type="submit" class="btn btn-small pull-right" style="margin-top:-3px">Buyer Sign In</button><% end %></li>
             <li><%= link_to :new_seller_session do %><button type="submit" class="btn btn-small pull-right" style="margin-top:-3px">Seller Sign In</button><% end %></li>
