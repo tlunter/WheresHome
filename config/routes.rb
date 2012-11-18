@@ -16,9 +16,9 @@ WheresHome::Application.routes.draw do
   ]
 
   devise_scope :buyer do
-    delete 'buyers/sign_out', to: 'buyers/sessions#destroy', as: :destroy_buyers_session
-    get 'buyers/edit', to: 'buyers/registrations#edit', as: :edit_buyers_registration
-    put 'buyers', to: 'buyers/registrations#update', as: :buyers_registration
+    delete 'buyers/sign_out', to: 'devise/sessions#destroy', as: :destroy_buyer_session
+    get 'buyers/edit', to: 'devise/registrations#edit', as: :edit_buyer_registration
+    put 'buyers', to: 'devise/registrations#update', as: :buyer_registration
   end
 
   root to: 'static_pages#index'
