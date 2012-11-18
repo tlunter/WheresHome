@@ -30,6 +30,7 @@ class Property < ActiveRecord::Base
                         numericality: { only_integer: true }
 
   has_many :pictures
+  has_many :notifications
   has_one :location
 
   accepts_nested_attributes_for :location, :pictures

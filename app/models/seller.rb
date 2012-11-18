@@ -39,6 +39,7 @@ class Seller < ActiveRecord::Base
                           format: { with: VALID_PHONE_NUMBER_REGEX,
                                     message: "The phone number must be of the format '(555)555-5555'"}
   has_many :properties
+  has_many :notifications
   has_one :picture
 
 end
