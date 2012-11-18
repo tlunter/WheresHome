@@ -1,0 +1,74 @@
+    <div class="span3">
+      <div class="side-search">   
+        <%= image_tag ('logo2.jpg') %>
+        <br><hr><br>
+        <p>Search apartment listings</p> 
+        <%= form_for @property, url: :properties_search, method: :get do |f| %>
+        <div class="navbar-search pull-left">
+          <%= f.fields_for :location do |l| %>
+          <%= l.text_field :city, placeholder: "City", class: "search-query" %>
+          <%= l.text_field :state, placeholder: "State", class: "search-query" %>
+          <% end %>
+        </div>
+        <br><hr class="soften"><br><br><br>
+        <p>Price Range</p>
+        <div class="form-horizontal">
+          <div class="control-group">
+            <div class="input-prepend input-append row-fluid">
+              <span class="add-on">$</span>
+              <%= f.text_field :min_price, placeholder: "Min.", class: "span4", id: "appendedPrependedInput" %>
+              <span class="add-on">.00</span>
+              <span>&nbsp; Min.</span>
+            </div>
+            <div class="input-prepend input-append row-fluid">
+              <span class="add-on">$</span>
+              <%= f.text_field :max_price, placeholder: "Max.", class: "span4", id: "appendedPrependedInput" %>
+              <span class="add-on">.00</span>
+              <span>&nbsp; Max.</span>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <%= f.label :bedrooms, "Number of Bedrooms", class: "options" %>
+        <%= f.select :bedrooms, options_for_select([0,1,2,3,4,5]) %>
+
+        <br>
+        <%= f.label :half_bathrooms, "Number of Half Bathrooms", class: "options" %>
+        <%= f.select :half_bathrooms, options_for_select([0,1,2,3,4,5]) %>
+
+        <br>
+        <%= f.label :full_bathrooms, "Number of Full Bathrooms", class: "options" %>
+        <%= f.select :full_bathrooms, options_for_select([0,1,2,3,4,5]) %>
+
+        <br>
+        <%= f.label :pets_allowed %>
+        <%= f.check_box :pets_allowed, class: "checkbox" %>
+
+        <br>
+        <%= f.submit "Where's Home »", class: "btn search-list pull-right" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="span7 offset1">
+      <p class="lead">Listings</p>
+      <% @properties.each do |p| %>
+        <div class="well well-small">
+          <p><b><%= p.location.address1 %> <%= p.location.address2 %>, <%= p.location.city %>, <%= p.location.state %> <%= p.location.zipcode %></b></p>             
+          <hr class="soften"> 
+         
+          <p class="wrapper"><%= p.description %></p>
+        </div>
+      <% end %>
+      <!-- <br><br><br><br><hr>
+      <div class="pagination pull-right">
+        <ul>
+          <li><a href="#">Prev</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">Next &raquo</a></li>
+        </ul>
+      </div> -->
+    </div>

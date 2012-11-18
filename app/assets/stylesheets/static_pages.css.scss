@@ -1,3 +1,364 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap";
+
+/* Main Layout */
+
+
+html {
+	background: #eee;
+}
+
+body {
+	background-color: inherit;
+	font-style: helvetica, sans-serif;
+	color: #222;
+
+}
+
+h1, h2, h3, h4 {
+	color: #222;
+}
+
+a {
+	background-color: inherit;
+}
+
+.container {
+	width: 100%;	
+}
+
+.content-well {
+	width: 75%;
+	margin-right: 12.5%;
+	margin-left: 12.5%;
+	margin-top: 0px;
+	margin-bottom: 40px;
+	background-color: #fff;
+	-moz-box-shadow: 3px 3px 3px #ccc;
+	-webkit-box-shadow: 3px 3px 3px #ccc;
+	box-shadow: 3px 3px 3px #ddd;
+}
+
+/* Fonts and Styles */
+
+.logo {
+	margin-left: 450px;
+}
+
+.navbar {
+  *position: relative;
+  *z-index: 2;
+  margin-bottom: 0px;
+  overflow: visible;
+  margin-top: 0px;
+}
+
+.navbar-inner {
+  padding-right: 20px;
+  padding-left: 20px;
+  /* background-color: #418BF1; */
+  background-image: -moz-linear-gradient(top, #418BF1, #333777);
+  background-image: -ms-linear-gradient(top, #418BF1, #333777);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#418BF1), to(#333777));
+  background-image: -webkit-linear-gradient(top, #418BF1, #333777);
+  background-image: -o-linear-gradient(top, #418BF1, #333777);
+  background-image: linear-gradient(top, #418BF1, #333777);
+  background-repeat: repeat-x;
+  z-index: 1;
+  -webkit-border-radius: 0px;
+     -moz-border-radius: 0px;
+          border-radius: 0px;
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.navbar .container {
+  width: auto;
+}
+
+.nav-collapse.collapse {
+  height: auto;
+}
+
+.navbar {
+  color: #418BF1;
+}
+
+
+.container-fluid {
+	width: 75%;
+	margin-right: 13.5%;
+	margin-left: 11.0%;
+	min-height: 100px;
+	margin-top: -18px;
+	padding-top: 30px;
+	margin-bottom: 0px;
+	padding-bottom: 30px;
+	clear: both;
+	border-left: 1px solid grey;
+	border-right: 1px solid grey;
+	background-color: #fff;
+	overflow: hidden;
+	z-index: -1;
+	color:black;
+}
+
+.footer {
+	width: 100%;
+	margin: auto;
+	min-height: 150px;
+	clear:both;
+}
+
+.footer p {
+	color: black;
+}
+
+.footer a {
+	color: white;
+}
+
+.footer-well {
+	width: 75%;
+	margin: auto;
+}
+
+.footer a:hover{
+	text-transform: underline;
+	background-color: inherit;
+}
+
+.foot-container {
+	padding-top: 10px;
+	background-color: #418BF1;
+	border-top: 3px ridge #999;
+	clear: both;
+	background-image: -moz-linear-gradient(top, #418BF1, #333777);
+	background-image: -ms-linear-gradient(top, #418BF1, #333777);
+  	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#418BF1), to(#333777));
+  	background-image: -webkit-linear-gradient(top, #418BF1, #333777);
+  	background-image: -o-linear-gradient(top, #418BF1, #333777);
+  	background-image: linear-gradient(top, #418BF1, #333777);
+
+
+}
+
+.navbar .navbar-inner .nav > li {
+  display: block;
+  float: left;
+}
+
+.navbar .navbar-inner .nav > li > a {
+  float: none;
+  padding: 9px 14px 15px;
+  line-height: 20px;
+  color: #eee;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.navbar .navbar-inner .nav > li > a:hover {
+  color: #ffffff;
+  text-decoration: none;
+  background-image: -moz-linear-gradient(top, #003311, #000);
+	background-image: -ms-linear-gradient(top, #003311, #000);
+  	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#003311), to(#000));
+  	background-image: -webkit-linear-gradient(top, #003311, #000);
+  	background-image: -o-linear-gradient(top, #003311, #000);
+  	background-image: linear-gradient(top, #003311, #000);
+}
+
+.navbar .nav .active > a,
+.navbar .nav .active > a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.navbar .divider-vertical {
+  width: 1px;
+  height: 40px;
+  margin: 0 9px;
+  overflow: hidden;
+  background-color: #222222;
+  border-right: 1px solid #333333;
+}
+
+.navbar .properties .nav li {
+	float: none;
+	min-width: 220px;
+	color: #222;
+}
+
+.navbar .properties .nav li a {
+	color: #222;
+}
+
+.navbar .properties .nav li a:hover {
+	background-image: -moz-linear-gradient(top, #418BF1, #333777);
+	background-image: -ms-linear-gradient(top, #418BF1, #333777);
+  	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#418BF1), to(#333777));
+  	background-image: -webkit-linear-gradient(top, #418BF1, #333777);
+  	background-image: -o-linear-gradient(top, #418BF1, #333777);
+  	background-image: linear-gradient(top, #418BF1, #333777);
+  	color: #fff;
+}
+
+.navbar .properties .nav li a:active {
+	background-image: -moz-linear-gradient(top, #418BF1, #333777);
+	background-image: -ms-linear-gradient(top, #418BF1, #333777);
+  	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#418BF1), to(#333777));
+  	background-image: -webkit-linear-gradient(top, #418BF1, #333777);
+  	background-image: -o-linear-gradient(top, #418BF1, #333777);
+  	background-image: linear-gradient(top, #418BF1, #333777);
+  	color: #fff;
+}
+
+
+.navbar .brand {
+  display: block;
+  float: left;
+  padding: 8px 0px 8px;
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: 170;
+  color: #fff;
+  font-style: Courier, serif;
+}
+
+.navbar .brand a {
+	color: #fff;
+}
+
+.navbar .brand a:hover {
+	text-transform: none;
+	background-color: transparent;
+}
+
+.navbar .properties .nav .active > a, 
+.navbar .properties .nav .active > a:hover {
+    color: white;
+    text-decoration: none;
+   }
+
+.navbar .properties .nav li a {
+	display: inline-block;
+	min-width: 200px;
+}
+
+.ads {
+	margin-left: 20%;
+	margin-right: 20%
+}
+
+.main-well {
+	max-height: 2000px;
+}
+
+.head {
+	width: 75%;
+	margin: auto;
+	border: 1 px solid;
+	min-height: 0px;
+	clear: both;
+}
+
+.align-center {
+	text-align: center;
+}
+
+/* Landing Page */
+.hero-unit {
+	background: #633728; /* Old browsers */
+	background: -moz-linear-gradient(top, #001000 1%, #100200 38%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#001000), color-stop(38%,#100200)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #001000 1%,#100200 38%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #001000 1%,#100200 38%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #001000 1%,#100200 38%); /* IE10+ */
+	background: linear-gradient(to bottom, #001000 1%,#100200 38%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001021', endColorstr='#102200',GradientType=0 ); /* IE6-9 */
+  	border-radius: 0px;
+  	margin-top: 0px;
+  	min-height: 340px;
+  	position: relative;
+  	top: 100px;
+  	opacity: .90;
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+
+}
+
+.hero-unit h1 {
+	padding-bottom: 10px;
+	padding-top: 0px;
+	text-shadow: 2px 1px 0px grey;
+	font-size: 75px;
+	color: #fff;
+	font-family: helvetica;
+}
+
+.hero-unit p {
+	color: #fff;
+	font-style: times, sans-serif;
+}
+
+.hero-unit .small {
+	font-size: 10px;
+}
+
+.land-container {
+	width: 60%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.land-back {
+	background-image: image_url('cityscape.jpg');
+	background-size: 2000px 2000px;
+	background-position: bottom;
+}
+
+.main-pics {
+	padding-top: 20px;
+}
+
+.general-well {
+	width: 70%;
+	margin: auto;
+	padding: 20px 20px 50px 20px;
+	color: #222;
+
+}
+
+.general-well a {
+	background-color: inherit;
+}
+
+.land-footer {
+	position: relative;
+	clear:both;
+	margin-top: 100px;
+}
+
+.map {
+	float: left;
+	margin-bottom: 50px;
+}
+
+.foot-logo {
+	margin-left: -130px;
+	margin-top: 20px;
+}
+
+.logo-land {
+	padding-left: 50px;
+}
+
+.lead {
+	font-size: 24px;
+}

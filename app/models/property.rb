@@ -25,6 +25,8 @@ class Property < ActiveRecord::Base
     :bedrooms, :full_bathrooms, :half_bathrooms, :available_on,
     :pets_allowed, :laundry_available, :parking_available,
     :description, :location_attributes
+
+  attr_accessor :min_price, :max_price
   
   validates :price, presence: true,
                         numericality: { only_integer: true }
@@ -33,7 +35,6 @@ class Property < ActiveRecord::Base
   has_many :notifications
   has_many :applications
   has_one :location
-
   accepts_nested_attributes_for :location, :pictures
   
   belongs_to :seller

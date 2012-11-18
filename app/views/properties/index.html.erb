@@ -1,22 +1,22 @@
 <h1>Listing properties</h1>
 
-<table>
+<table style="width: 75%; margin: 0 auto">
   <tr>
-    <th>Location</th>
-    <th>Price</th>
-    <th>Sell type</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th style="width: 55%">Location</th>
+    <th style="width: 10%">Price</th>
+    <th style="width: 10%">Sale type</th>
+    <th style="width: 10%">Status</th>
+    <th style="width: 5%"></th>
+    <th style="width: 5%"></th>
+    <th style="width: 5%"></th>
   </tr>
 
 <% @properties.each do |property| %>
   <tr>
-    <td><%= property.location.address1 %> <%= property.location.address2 %></td>
+    <td><%= property.location.address1 %> <%= property.location.address2 %>, <%= property.location.city %>, <%= property.location.state %> <%= property.location.zipcode %></td>
     <td><%= property.price %></td>
-    <td><%= property.sell_type %></td>
-    <td><%= property.status %></td>
+    <td><%= property.sell_type == 0 ? "Rent" : "Sell" %></td>
+    <td><%= property.status == 0 ? "Closed" : "Open" %></td>
     <td><%= link_to 'Show', property %></td>
     <td><%= link_to 'Edit', edit_property_path(property) %></td>
     <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>

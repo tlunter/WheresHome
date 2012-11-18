@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Where's Home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Where's Home - Find apartments and renters. Quick, easy renting. Reliable pre-screened tenants">
+  <meta name="author" content="Angel Hack">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Where's Home - Find apartments and renters. Quick, easy renting. Reliable pre-screened tenants">
+  <meta name="author" content="Angel Hack">
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body data-spy="scroll" data-target=".subnav" data-offset="50">
+<div class="land-back">
+  <div class="banner">
+    <div class="hero-unit">
+      <div class="land-container">
+        <h1 class="align-center">Where's Home?</h1>
+            <br>
+            <p style="color:white">I am a...</p>
+            <div class="main-pics">
+                <%= link_to image_tag("renter.jpg", alt: "Renter", width: 300, height: 200), buyer_omniauth_authorize_path(:linkedin), class: "thumbnail pull-left"  %>
+                <%= link_to image_tag("landlord.jpg", alt: "Landlord", width: 300, height: 200), new_seller_session_path, class: "thumbnail pull-right" %> 
+              </a>
+            </div>
+            
+      </div>
+    </div>
+    
+    <br>
+
+    <div class="row-fluid land-footer">
+      <%= link_to 'about' do %>
+      <button class="btn btn-large pull-right" style="width:250px; margin-right:40px; margin-bottom:120px"><b>About Us &raquo<b></button>
+      <% end %>
+      <div class="logo-land">
+        <%= image_tag "logo2.jpg", alt: "Logo", width: 110, height: 80 %>
+      </div>
+  </div>
+</div>
+</body>
+</html>
