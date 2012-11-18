@@ -8,7 +8,8 @@ WheresHome::Application.routes.draw do
   resources :locations
 
   devise_for :sellers, controllers: {
-    registrations: "sellers/registrations"
+    registrations: "sellers/registrations",
+    sessions: 'sellers/sessions'
   }
 
   devise_for :buyers, controllers: {
