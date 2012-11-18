@@ -11,7 +11,9 @@
     </div>
   <% end %>
 
-
+<br>
+<div class="margin-left">
+  <div class="span5 form-left">
   <%= f.fields_for :location do |l| %>
     <div class="field">
       <%= l.label :address1 %><br />
@@ -34,6 +36,7 @@
       <%= l.text_field :zipcode %>
     </div>
   <% end %>
+
   <div class="field">
     <%= f.label :price %><br />
     <%= f.text_field :price %>
@@ -46,6 +49,9 @@
     <%= f.label :status %><br />
     <%= f.select :status, [['Closed', 0], ['Open', 1]] %>
   </div>
+
+
+
   <div class="field">
     <%= f.label :bedrooms %><br />
     <%= f.text_field :bedrooms %>
@@ -58,6 +64,9 @@
     <%= f.label :half_bathrooms %><br />
     <%= f.text_field :half_bathrooms %>
   </div>
+</div>
+
+<div class="span5">
   <div class="field">
     <%= f.label :available_on %><br />
     <%= f.date_select :available_on %>
@@ -81,4 +90,6 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+</div>
+</div>
 <% end %>
