@@ -1,4 +1,7 @@
 WheresHome::Application.routes.draw do
+
+  resources :applications, except: [:new]
+  match 'applications/new/:property_id', to: 'applications#new'
   resources :jobs
   resources :properties
   resources :pictures

@@ -2,7 +2,7 @@ class LocationsController < ApplicationController
   def index
     if current_buyer.nil?
       flash[:error] = "You must be a signed in buyer to get a location index"
-      redirect_to :back
+      redirect_to root_url
     else
       @locations = current_buyer.locations
     end
@@ -31,7 +31,7 @@ class LocationsController < ApplicationController
       end
     else
       flash[:error] = "You must be signed in to create a location"
-      redirect_to :back
+      redirect_to root_url
     end
   end
 

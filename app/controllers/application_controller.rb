@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :seller_or_buyer
+  include ApplicationHelper
 
   private
   def after_sign_in_path_for(resource)
@@ -15,7 +16,7 @@ class ApplicationController < ActionController::Base
     if seller_signed_in? and buyer_signed_in?
       sign_out
       flash[:error] = "Cannot have a buyer and a seller logged in at the same time!"
-      redirect_to :root
+      redirect_to root_url
     end
   end
 end

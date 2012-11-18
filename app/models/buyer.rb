@@ -45,8 +45,8 @@ class Buyer < ActiveRecord::Base
   #                                  message: "The phone number must be of the format '(555)555-5555'"}
 
   has_many :locations, dependent: :delete_all
-  has_many :roomates
-  has_many :applications, through: :roomates
+  has_many :roommates
+  has_many :applications, through: :roommates
   has_many :jobs, dependent: :delete_all
   has_one :picture
   

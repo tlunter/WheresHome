@@ -50,7 +50,7 @@ class PropertiesController < ApplicationController
     def require_login
       unless logged_in?
         flash[:error] = "Only logged in sellers can add a edit their jobs"
-        redirect_to :back
+        redirect_to root_url
       end
     end
 
@@ -58,7 +58,7 @@ class PropertiesController < ApplicationController
       @property = current_seller.properties.find_by_id(params[:id])
       unless @property
         flash[:error] = "You cannot modify a property that you do not own"
-        redirect_to :back
+        redirect_to root_url
       end
     end
 
