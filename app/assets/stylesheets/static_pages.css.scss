@@ -165,12 +165,12 @@ a {
 .navbar .navbar-inner .nav > li > a:hover {
   color: #ffffff;
   text-decoration: none;
-  background-image: -moz-linear-gradient(top, #004444, #000);
-	background-image: -ms-linear-gradient(top, #004444, #000);
-  	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#004444), to(#000));
-  	background-image: -webkit-linear-gradient(top, #004444, #000);
-  	background-image: -o-linear-gradient(top, #004444, #000);
-  	background-image: linear-gradient(top, #004444, #000);
+  background-image: -moz-linear-gradient(top, #003311, #000);
+	background-image: -ms-linear-gradient(top, #003311, #000);
+  	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#003311), to(#000));
+  	background-image: -webkit-linear-gradient(top, #003311, #000);
+  	background-image: -o-linear-gradient(top, #003311, #000);
+  	background-image: linear-gradient(top, #003311, #000);
 }
 
 .navbar .nav .active > a,
@@ -357,4 +357,8 @@ a {
 
 .logo-land {
 	padding-left: 50px;
+}
+
+.lead {
+	font-size: 24px;
 }
