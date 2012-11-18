@@ -6,9 +6,6 @@
 
 /* Main Layout */
 
-* {
-	color: black;
-}
 
 html {
 	background: #eee;
@@ -17,15 +14,21 @@ html {
 body {
 	background-color: inherit;
 	font-style: helvetica, sans-serif;
-	color: #000;
+	color: #222;
 
+}
+
+h1, h2, h3, h4 {
+	color: #222;
+}
+
+a {
+	background-color: inherit;
 }
 
 .container {
-	width: 100%;
-	
+	width: 100%;	
 }
-
 
 .content-well {
 	width: 75%;
@@ -42,9 +45,7 @@ body {
 /* Fonts and Styles */
 
 .logo {
-	position: relative;
-	top: 50;
-	right: 50;
+	margin-left: 450px;
 }
 
 .navbar {
@@ -104,6 +105,7 @@ body {
 	background-color: #fff;
 	overflow: hidden;
 	z-index: -1;
+	color:black;
 }
 
 .footer {
@@ -111,6 +113,10 @@ body {
 	margin: auto;
 	min-height: 150px;
 	clear:both;
+}
+
+.footer p {
+	color: black;
 }
 
 .footer a {
@@ -131,12 +137,15 @@ body {
 	padding-top: 10px;
 	background-color: #418BF1;
 	border-top: 3px ridge #999;
+	clear: both;
 	background-image: -moz-linear-gradient(top, #418BF1, #333777);
 	background-image: -ms-linear-gradient(top, #418BF1, #333777);
   	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#418BF1), to(#333777));
   	background-image: -webkit-linear-gradient(top, #418BF1, #333777);
   	background-image: -o-linear-gradient(top, #418BF1, #333777);
   	background-image: linear-gradient(top, #418BF1, #333777);
+
+
 }
 
 .navbar .nav > li {
@@ -156,14 +165,18 @@ body {
 .navbar .nav > li > a:hover {
   color: #ffffff;
   text-decoration: none;
-  background-color: #4189B1;
+  background-image: -moz-linear-gradient(top, #004444, #000);
+	background-image: -ms-linear-gradient(top, #004444, #000);
+  	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#004444), to(#000));
+  	background-image: -webkit-linear-gradient(top, #004444, #000);
+  	background-image: -o-linear-gradient(top, #004444, #000);
+  	background-image: linear-gradient(top, #004444, #000);
 }
 
 .navbar .nav .active > a,
 .navbar .nav .active > a:hover {
   color: #ffffff;
   text-decoration: none;
-  background-color: #222222;
 }
 
 .navbar .divider-vertical {
@@ -183,7 +196,7 @@ body {
   margin-left: 20px;
   font-size: 20px;
   font-weight: 170;
-  color: #000;
+  color: #fff;
   font-style: Courier, serif;
 }
 
@@ -193,7 +206,6 @@ body {
 
 .navbar .brand a:hover {
 	text-transform: none;
-	background-color: inherit;
 }
 
 .ads {
@@ -220,19 +232,42 @@ body {
 
 /* Landing Page */
 .hero-unit {
-	background-image: -moz-linear-gradient(top, #418BF1, #333777);
-	background-image: -ms-linear-gradient(top, #418BF1, #333777);
-  	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#418BF1), to(#333777));
-  	background-image: -webkit-linear-gradient(top, #418BF1, #333777);
-  	background-image: -o-linear-gradient(top, #418BF1, #333777);
-  	background-image: linear-gradient(top, #418BF1, #333777);
+	background: #633728; /* Old browsers */
+	background: -moz-linear-gradient(top, #001000 1%, #100200 38%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#001000), color-stop(38%,#100200)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #001000 1%,#100200 38%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #001000 1%,#100200 38%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #001000 1%,#100200 38%); /* IE10+ */
+	background: linear-gradient(to bottom, #001000 1%,#100200 38%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001021', endColorstr='#102200',GradientType=0 ); /* IE6-9 */
   	border-radius: 0px;
-  	margin-top: 100px;
+  	margin-top: 0px;
+  	min-height: 340px;
+  	position: relative;
+  	top: 100px;
+  	opacity: .90;
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+
 }
 
 .hero-unit h1 {
-	padding-bottom: 50px;
+	padding-bottom: 10px;
 	padding-top: 0px;
+	text-shadow: 2px 1px 0px grey;
+	font-size: 75px;
+	color: #fff;
+	font-family: helvetica;
+}
+
+.hero-unit p {
+	color: #fff;
+	font-style: times, sans-serif;
+}
+
+.hero-unit .small {
+	font-size: 10px;
 }
 
 .land-container {
@@ -241,6 +276,40 @@ body {
 	margin-left: auto;
 }
 
-.hero-unit {
-	
+.land-back {
+	background-image: image_url('cityscape.jpg');
+	background-size: 2000px 2000px;
+	background-position: bottom;
+}
+
+.main-pics {
+	padding-top: 20px;
+}
+
+.general-well {
+	width: 70%;
+	margin: auto;
+	padding: 20px 20px 50px 20px;
+	color: #222;
+
+}
+
+.general-well a {
+	background-color: inherit;
+}
+
+.land-footer {
+	position: relative;
+	clear:both;
+	margin-top: 150px;
+}
+
+.map {
+	float: left;
+	margin-bottom: 50px;
+}
+
+.foot-logo {
+	margin-left: -130px;
+	margin-top: 20px;
 }

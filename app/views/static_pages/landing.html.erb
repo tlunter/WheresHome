@@ -1,20 +1,36 @@
-<div class="banner">
-  <div class="land-photos">
+<div class="land-back">
+  <div class="banner">
     <div class="hero-unit">
       <div class="land-container">
-        <p class="lead">Welcome to</p>
-        <h1 class="align-center">Where's Home</h1>
-        
-
-      
-          <a href="#" class="btn btn-info btn-block btn-primary btn-large">Renter</a>
-
-      
-          <a href="#" class="btn btn-info btn-large btn-block btn-primary">Landlord</a>
-
-
-     
+        <h1 class="align-center">Where's Home?</h1>
+            <br>
+            <p style="color:white">I am a...</p>
+            <div class="main-pics">
+              <a href="renter" class="thumbnail pull-left">
+                <%= image_tag "renter.jpg", alt: "Renter", width: 300, height: 200 %>
+              </a>
+         
+              <a href="landlord" class="thumbnail pull-right">
+                <%= image_tag "landlord.jpg", alt: "Landlord", width: 300, height: 200 %> 
+              </a>
+            </div>
+            
       </div>
     </div>
-  </div>
+    
+    <br>
+    <div class="foot-container">
+      <div class="footer footer-well">
+          <div class="span3">
+            <div class="foot-logo">
+            <%= image_tag "logo2.jpg", alt: "Logo", width: 110, height: 80 %>
+            </div>
+          </div>
+          <div class="span5 align-center"><br>
+            <p><a href="index.html">Home</a> &nbsp | &nbsp <a href="about.html">About</a> &nbsp | &nbsp <a href="contact.html">Contact Us</a></p>
+            <p>Where's Home? All Rights Reserved 2012</p>
+            <br>
+          </div>
+      </div>
+    </div>
 </div>
