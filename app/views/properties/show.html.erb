@@ -1,5 +1,5 @@
-<p id="notice"><%= notice %></p>
-
+<h1>View Listing</h1>
+<br><br>
 <p>
   <b>Price:</b>
   <%= @property.price %>
@@ -24,7 +24,8 @@
   <%= @property.location.city %>, <%= @property.location.state %> <%= @property.location.zipcode %>
 </p>
 
-
-
+<% unless current_buyer.nil? %>
+  <%= link_to 'Apply', controller: :applications, action: :new, property_id: @property %> | 
+<% end %>
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>

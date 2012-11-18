@@ -56,8 +56,7 @@
         <div class="well well-small">
           <p><b><%= p.location.address1 %> <%= p.location.address2 %>, <%= p.location.city %>, <%= p.location.state %> <%= p.location.zipcode %></b></p>             
           <hr class="soften"> 
-         
-          <p class="wrapper"><%= p.description %></p>
+          <p class="wrapper"><%= p.description %><span style="float: right"><%= link_to "View", p %></span></p>
         </div>
       <% end %>
       <!-- <br><br><br><br><hr>

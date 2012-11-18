@@ -1,21 +1,34 @@
 <h1>Listing applications</h1>
 
-<table>
+<table style="width: 75%">
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th style="width: 55%">Property</th>
+    <th style="width: 30%">Roommates</th>
+    <th style="width: 5%"></th>
+    <% unless current_buyer.nil? %>
+    <th style="width: 5%"></th>
+    <% end %>
   </tr>
 
 <% @applications.each do |application| %>
   <tr>
+    <td>
+      <% unless application.property.nil? %>
+        <%= application.property.location.address1 %>,<br>
+        <% unless application.property.location.address2.blank? %>
+            <%= application.property.location.address2 %>,<br>
+        <% end %>
+        <%= application.property.location.city %>,<br>
+        <%= application.property.location.state %> <%= application.property.location.zipcode %> 
+      <% end %>
+    </td>
+    <td><%= application[:names].join(", ") %></td>
     <td><%= link_to 'Show', application %></td>
-    <td><%= link_to 'Edit', edit_application_path(application) %></td>
+    <% unless current_buyer.nil? %>
     <td><%= link_to 'Destroy', application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Application', new_application_path %>
