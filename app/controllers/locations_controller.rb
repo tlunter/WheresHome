@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
   def index
     if current_buyer.nil?
-      flash[:error] = "You must be a signed in to get a location index"
+      flash[:error] = "You must be a signed in buyer to get a location index"
       redirect_to :back
     else
       @locations = current_buyer.locations
@@ -20,14 +20,14 @@ class LocationsController < ApplicationController
   end
 
   def create
-    case who_is_signed_in
+    case who_is_signed_in?
     when :seller
-      @location = current_seller.properties.find_by_id(params[:property_id]).location.build(params[:location])
-    when :user
+      flash[:error] = "Sellers should add locations by properties only"
+    when :buyer
       if params[:job_id].nil?
-        @location = current_buyer.locations.build(params[:job])
+        @location = current_buyer.locations.build(params[:location])
       else
-        @location = current_buyer.jobs.find_by_id(params[:job_id]).location.build(params[:location])
+        @location = current_buyer.jobs.first_by_id(params[:job_id]).location.build(params[:location])
       end
     else
       flash[:error] = "You must be signed in to create a location"
@@ -36,16 +36,19 @@ class LocationsController < ApplicationController
   end
 
   def update
-    @location = Location.find(params[:id])
-
-    respond_to do |format|
+    case who_is_signed_in?
+    when :seller
+      flash[:error] = "Sellers have no locations to update"
+    when :buyer
+      @location = current_buyer.locations.first_by_id(params[:id])
       if @location.update_attributes(params[:location])
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
-        format.json { head :no_content }
+        flash[:success] = "Location updated"
+        redirect_to current_buyer
       else
-        format.html { render action: "edit" }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
+        render 'edit'
       end
+    else
+      flash[:error] = "You must be a signed in buyer to update a location"
     end
   end
 
@@ -54,7 +57,7 @@ class LocationsController < ApplicationController
     when :seller
       flash[:error] = "Sellers have no locations to destroy"
     when :buyer
-      current_buyer.locations.find_by_id(params[:id]).destroy
+      current_buyer.locations.first_by_id(params[:id]).destroy
       flash[:success] = "Location destroyed"
       redirect_to current_buyer
     else
