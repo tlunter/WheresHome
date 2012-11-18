@@ -3,6 +3,7 @@ class Buyers::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def linkedin
     @buyer = Buyer.find_for_linkedin_oauth(request.env["omniauth.auth"], current_buyer)
 
+    logger.debug "Buyer: #{@buyer.to_yaml}"
     if @buyer.persisted?
       sign_in_and_redirect @buyer, event: :authentication
       remember_me @buyer

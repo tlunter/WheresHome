@@ -13,6 +13,7 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
+    @location = Location.new
   end
 
   def edit
@@ -20,7 +21,8 @@ class JobsController < ApplicationController
 
   def create
     @job = current_buyer.jobs.build(params[:job])
-    if @job.save
+    @location = @job.location.build(params[:location])
+    if @location.save and @job.save
       flash[:success] = "Job created"
       redirect_to @job
     else
@@ -29,7 +31,7 @@ class JobsController < ApplicationController
   end
 
   def update
-    if @job.update_attributes(params[:job])
+    if @location.update_attributes(params[:location]) and @job.update_attributes(params[:job])
       flash[:success] = "Job updated"
       redirect_to @job
     else
@@ -46,23 +48,19 @@ class JobsController < ApplicationController
 
   private
     def require_login
-      unless logged_in?
+      unless buyer_signed_in?
         flash[:error] = "Only logged in buyers can add edit their jobs"
-        redirect_to :back
+        redirect_to root_url
       end
     end
 
     def correct_buyer
       @job = current_buyer.jobs.find_by_id(params[:id])
+      @location = @job.location
       unless @job
         flash[:error] = "Only logged in buyers can add edit their jobs"
-        redirect_to :back
+        redirect_to root_url
       end
     end
 
-    # 'bool-ize' the current_buyer
-    def logged_in?
-      !!current_buyer
-    end
-  
 end

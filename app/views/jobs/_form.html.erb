@@ -1,4 +1,4 @@
-<%= form_for(@job) do |f| %>
+<%= form_for(@job, html: { multipart: true } ) do |f| %>
   <% if @job.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
@@ -24,9 +24,39 @@
     <%= f.text_field :salary %>
   </div>
   <div class="field">
-    <%= f.label :phonenumber %><br />
-    <%= f.text_field :phonenumber %>
+    <%= f.label :manager_first_name %><br />
+    <%= f.text_field :manager_first_name %>
   </div>
+  <div class="field">
+    <%= f.label :manager_email %><br />
+    <%= f.email_field :manager_email%>
+  </div>
+  <div class="field">
+    <%= f.label :phonenumber %><br />
+    <%= f.text_field :phonenumber%>
+  </div>
+  <%= f.fields_for @location do |l| %>
+    <div class="field">
+    <%= l.label :address1 %><br />
+    <%= l.text_field :address1 %>
+    </div>
+    <div class="field">
+    <%= l.label :address2 %><br />
+    <%= l.text_field :address2 %>
+    </div>
+    <div class="field">
+    <%= l.label :city %><br />
+    <%= l.text_field :city %>
+    </div>
+    <div class="field">
+    <%= l.label :state %><br />
+    <%= l.text_field :state %>
+    </div>
+    <div class="field">
+    <%= l.label :zipcode %><br />
+    <%= l.text_field :zipcode %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

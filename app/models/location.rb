@@ -12,7 +12,7 @@
 #
 
 class Location < ActiveRecord::Base
-  attr_accessible :address1, :address2, :city, :state
+  attr_accessible :address1, :address2, :city, :state, :zipcode
   
   before_save do |loc|
     loc.state = loc.state.upcase
@@ -20,11 +20,14 @@ class Location < ActiveRecord::Base
 
   VALID_STATE_REGEX = /[a-zA-Z]{2}/
   VALID_CITY_REGEX  = /[a-zA-Z]+/
+  VALID_ZIPCODE_REGEX = /[0-9]{5}/
 
   validates :state, presence: true,
                     format: { with: VALID_STATE_REGEX }
   validates :city, presence: true,
                    format: { with: VALID_CITY_REGEX }
+  validates :zipcode, presence: true,
+                    format: { with: VALID_ZIPCODE_REGEX }
   validates :address1, presence: true
 
   belongs_to :buyer

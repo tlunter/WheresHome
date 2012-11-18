@@ -18,6 +18,9 @@
 #  first_name             :string(255)
 #  last_name              :string(255)
 #  phone_number           :string(255)
+#  monthly_income         :integer
+#  move_in                :date
+#  pets                   :boolean
 #
 
 class Buyer < ActiveRecord::Base
@@ -30,23 +33,24 @@ class Buyer < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-    :first_name, :last_name, :phone_number
+    :first_name, :last_name, :phone_number, :monthly_income,
+    :pets
 
   validates :first_name, presence: true
   validates :last_name, presence: true
 
   VALID_PHONE_NUMBER_REGEX = /\(\d{3}\)\d{3}-\d{4}/
-  validates :phone_number, presence: true,
-                          format: { with: VALID_PHONE_NUMBER_REGEX,
-                                    message: "The phone number must be of the format '(555)555-5555'"}
- 
+  #validates :phone_number, presence: false,
+  #                         format: { with: VALID_PHONE_NUMBER_REGEX,
+  #                                  message: "The phone number must be of the format '(555)555-5555'"}
+
   has_many :locations, dependent: :delete_all
   has_many :jobs, dependent: :delete_all
   has_one :picture
   
   def self.find_for_linkedin_oauth(auth, signed_in_resource=nil)
     data = auth.info
-    user = Buyer.where(email: auth.info.email).first
+    user = Buyer.where(email: data["email"]).first
     if user
       user["first_name"] = data["first_name"]
       user["last_name"] = data["last_name"]
